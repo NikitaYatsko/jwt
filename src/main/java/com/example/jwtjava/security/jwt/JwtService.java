@@ -1,4 +1,4 @@
-package com.example.jwtjava.security;
+package com.example.jwtjava.security.jwt;
 
 import com.example.jwtjava.model.dto.JwtAuthenticationDto;
 import io.jsonwebtoken.*;
