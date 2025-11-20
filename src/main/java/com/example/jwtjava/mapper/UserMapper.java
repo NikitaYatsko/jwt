@@ -14,17 +14,18 @@ public class UserMapper {
         dto.setEmail(user.getEmail());
         dto.setFirstName(user.getFirstName());
         dto.setLastName(user.getLastName());
+        dto.setPassword(user.getPassword());
         return dto;
     }
 
     public User toEntity(UserDto dto) {
-        if (dto == null) {
-            return null;
-        }
+        if (dto == null) return null;
         User user = new User();
         user.setEmail(dto.getEmail());
         user.setFirstName(dto.getFirstName());
         user.setLastName(dto.getLastName());
+        user.setPassword(dto.getPassword());
         return user;
     }
+
 }

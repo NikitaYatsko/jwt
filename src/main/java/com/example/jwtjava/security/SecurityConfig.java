@@ -1,7 +1,7 @@
 package com.example.jwtjava.security;
 
 import com.example.jwtjava.security.jwt.JwtFilter;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -14,7 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth ->
-                        auth.requestMatchers("/user/registration", "/auth/**").permitAll()
+                        auth.requestMatchers("users/create","/user/registration", "/auth/**").permitAll()
                                 .requestMatchers("/**").authenticated())
                 .sessionManagement(session ->
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
@@ -38,6 +38,6 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(4);
+        return new BCryptPasswordEncoder();
     }
 }
